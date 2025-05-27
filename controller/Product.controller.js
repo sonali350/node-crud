@@ -10,3 +10,15 @@ export const addProduct = async (req, res, next) => {
     res.status(500).json({ message: "internal server error" });
   }
 };
+
+
+export const saveInBulk = async(req,res,next)=>{
+try{
+
+
+  const product = Product.insertMany(req.body);
+  return res.status(200).json({message:"add product successfully"})
+}catch(error){
+  res.status(500).json({message: "internal server error"});
+}
+}
